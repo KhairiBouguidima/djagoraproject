@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect ,useCallback } from 'react';
 import { 
     Cpu, History, Play, FastForward, Loader2, 
     AlertCircle, CheckCircle2, X, Info, TrendingUp 
@@ -32,21 +32,23 @@ const PredictModel = () => {
         { name: 'MarketingSpend', label: 'Marketing Spend', placeholder: 'e.g. 471000' }
     ];
 
-        const fetchHistory = async () => {
-        if (!currentUser) return;
-        try {
-            const response = await fetch(`${BASE_URL}history/${currentUser.uid}/`);
-            if (!response.ok) throw new Error(`Error: ${response.status}`);
-            const data = await response.json();
-            setHistory(data);
-        } catch (err) {
-            console.error("Failed to fetch history:", err);
-        }
-    };
-    
-    useEffect(() => {
-        if (currentUser) fetchHistory();
-    }, [currentUser]);
+const fetchHistory = useCallback(async () => {
+    if (!currentUser) return;
+
+    try {
+        const response = await fetch(`${BASE_URL}history/${currentUser.uid}/`);
+        if (!response.ok) throw new Error(`Error: ${response.status}`);
+
+        const data = await response.json();
+        setHistory(data);
+    } catch (err) {
+        console.error("Failed to fetch history:", err);
+    }
+}, [currentUser]);
+
+useEffect(() => {
+    if (currentUser) fetchHistory();
+}, [currentUser, fetchHistory]);
 
 
 
