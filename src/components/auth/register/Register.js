@@ -33,7 +33,7 @@ const Register = () => {
                 await doEmailVerification();
                 // Professional touch: using a toast or alert before redirecting
                 alert("Account created! Please check your email for a verification link.");
-                navigate('/home');
+                navigate('/login');
             } catch (err) {
                 setErrorMessage(err.message.replace("Firebase: ", ""));
                 setIsRegistering(false);

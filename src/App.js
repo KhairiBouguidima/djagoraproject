@@ -26,7 +26,7 @@ function App() {
       <Router>
         {/* The Navbar stays outside Routes so it appears on all pages */}
         
-                <ProtectedRoute>
+                        <ProtectedRoute>
                   <Navbar /> 
                 </ProtectedRoute>
         <main className="app-main-content">
