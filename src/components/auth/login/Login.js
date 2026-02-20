@@ -73,13 +73,13 @@ const Login = () => {
                         <div className="logo-box-small">
                             <div className="logo-dot"></div>
                         </div>
-                        <span className="brand-name" style={{ fontWeight: 700, fontSize: '1.2rem' }}>Djagora</span>
+                        <span className="brand-name" style={{ fontWeight: 700, fontSize: '1.2rem' }}>Analyse Profit</span>
                     </div>
                     
                     <div style={{ marginTop: 'auto', marginBottom: 'auto' }}>
-                        <h2 style={{ fontSize: '1.5rem', marginBottom: '10px', textAlign: 'center' }}>Elevate your workflow</h2>
+                        <h2 style={{ fontSize: '1.5rem', marginBottom: '10px', textAlign: 'center' }}>Elevate your Dashboard</h2>
                         <p style={{ textAlign: 'center', color: '#94a3b8', lineHeight: '1.6' }}>
-                            Access your personalized dashboard and collaborate with your team in real-time.
+                            Access your personalized dashboard to test our Model.
                         </p>
                     </div>
 

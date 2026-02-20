@@ -65,13 +65,13 @@ const Register = () => {
                         <div className="logo-box-small">
                             <div className="logo-dot"></div>
                         </div>
-                        <span className="brand-name" style={{ fontWeight: 700, fontSize: '1.2rem' }}>Djagora</span>
+                        <span className="brand-name" style={{ fontWeight: 700, fontSize: '1.2rem' }}>Analyse Profit</span>
                     </div>
                     
                     <div style={{ marginTop: 'auto', marginBottom: 'auto' }}>
                         <h2 style={{ fontSize: '1.5rem', marginBottom: '10px', textAlign: 'center' }}>Start your journey</h2>
                         <p style={{ textAlign: 'center', color: '#94a3b8', lineHeight: '1.6' }}>
-                            Join Djagora today and unlock professional tools designed for modern creators.
+                            Join Our platform today and unlock professional tools designed for modern creators.
                         </p>
                     </div>
 
