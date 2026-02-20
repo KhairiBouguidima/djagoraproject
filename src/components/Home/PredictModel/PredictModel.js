@@ -32,11 +32,7 @@ const PredictModel = () => {
         { name: 'MarketingSpend', label: 'Marketing Spend', placeholder: 'e.g. 471000' }
     ];
 
-    useEffect(() => {
-        if (currentUser) fetchHistory();
-    }, [currentUser ,fetchHistory()]);
-
-    const fetchHistory = async () => {
+        const fetchHistory = async () => {
         if (!currentUser) return;
         try {
             const response = await fetch(`${BASE_URL}history/${currentUser.uid}/`);
@@ -47,6 +43,12 @@ const PredictModel = () => {
             console.error("Failed to fetch history:", err);
         }
     };
+    
+    useEffect(() => {
+        if (currentUser) fetchHistory();
+    }, [currentUser]);
+
+
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;

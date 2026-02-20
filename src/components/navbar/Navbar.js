@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, User, LogOut, LayoutDashboard, BarChart3, ChevronDown } from 'lucide-react';
+import { Menu, X, LogOut, LayoutDashboard, BarChart3, ChevronDown } from 'lucide-react';
 import { doSignOut } from '../../components/firebase/auth';
 import './Navbar.css';
 
