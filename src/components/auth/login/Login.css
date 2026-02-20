@@ -1,0 +1,219 @@
+/* Container & Layout */
+.register-container {
+  min-height: 100vh;
+  background-color: #020617; /* Slate 950 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.register-card {
+  display: flex;
+  width: 100%;
+  max-width: 960px;
+  min-height: 600px;
+  background-color: #0f172a; /* Slate 900 */
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid #1e293b;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Left Section (Info) */
+.register-info {
+  flex: 1;
+  background: linear-gradient(135deg, #1e293b 0%, #020617 100%);
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  border-right: 1px solid #1e293b;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.logo-box-small {
+  width: 28px;
+  height: 28px;
+  background: #2563eb;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+}
+
+.logo-dot {
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+}
+
+.register-img {
+  width: 100%;
+  max-width: 280px;
+  margin: auto auto 0 auto;
+  filter: drop-shadow(0 0 30px rgba(37, 99, 235, 0.15));
+  opacity: 0.9;
+}
+
+/* Right Section (Form) */
+.register-form-section {
+  flex: 1.2;
+  padding: 56px;
+  background-color: #0f172a;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-header h1 {
+  letter-spacing: -0.025em;
+}
+
+/* Form Elements */
+.input-group {
+  margin-bottom: 24px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 13px;
+  color: #94a3b8;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  color: #475569;
+  pointer-events: none;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 14px 14px 14px 44px;
+  background-color: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  color: white;
+  font-size: 15px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input-wrapper input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background-color: #020617;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.input-wrapper input::placeholder {
+  color: #334155;
+}
+
+/* Buttons */
+.register-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.register-btn:hover:not(:disabled) {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
+}
+
+.register-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.google-btn:hover {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+}
+
+/* Status & Feedback */
+.error-banner {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Divider Styling */
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 35%;
+  height: 1px;
+  background-color: #1e293b;
+}
+
+.divider::before { left: 0; }
+.divider::after { right: 0; }
+
+/* Animations */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 850px) {
+  .register-card {
+    flex-direction: column;
+    max-width: 450px;
+  }
+  .register-info {
+    padding: 32px;
+    border-right: none;
+    border-bottom: 1px solid #1e293b;
+  }
+  .register-img {
+    display: none; /* Hide image on small screens for better UX */
+  }
+  .register-form-section {
+    padding: 32px;
+  }
+}

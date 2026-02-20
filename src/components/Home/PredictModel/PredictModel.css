@@ -1,0 +1,409 @@
+/* --- Root Variables & Reset --- */
+:root {
+    --bg-deep: #020617;
+    --card-bg: #0f172a;
+    --accent-blue: #3b82f6;
+    --accent-glow: rgba(59, 130, 246, 0.5);
+    --border-color: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+}
+
+.predict-page {
+    background-color: var(--bg-deep);
+    min-height: 100vh;
+    color: var(--text-main);
+}
+
+.predict-container {
+    padding: 60px 8%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* --- Iconic Header --- */
+.predict-header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    margin-bottom: 10px;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #3b82f6 0%, #2dd4bf 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- The Grid Layout --- */
+.predict-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+/* --- Card Aesthetic --- */
+.predict-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 28px;
+    padding: 40px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle glow at the top of cards */
+.predict-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+}
+
+/* --- Premium Inputs --- */
+.inputs-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.input-group label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.input-group input, 
+.state-select {
+    background: #020617;
+    border: 1.5px solid var(--border-color);
+    border-radius: 16px;
+    padding: 16px;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input-group input:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+    outline: none;
+    transform: translateY(-2px);
+}
+
+/* --- Dynamic Buttons --- */
+.btn-predict {
+    padding: 18px;
+    border-radius: 18px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.4s ease;
+    border: none;
+}
+
+.btn-predict.primary {
+    background: var(--accent-blue);
+    color: white;
+    box-shadow: 0 10px 25px -5px var(--accent-glow);
+}
+
+.btn-predict.secondary {
+    background: #1e293b;
+    color: white;
+    border: 1px solid #334155;
+}
+
+.btn-predict:hover:not(:disabled) {
+    transform: scale(1.02);
+    filter: brightness(1.2);
+}
+
+/* --- THE ICONIC RESULT PANEL --- */
+.result-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at top right, #1e293b, #0f172a);
+    text-align: center;
+}
+
+.result-value {
+    font-size: 4.5rem;
+    font-weight: 900;
+    margin: 20px 0;
+    letter-spacing: -2px;
+    animation: glowText 2s infinite alternate;
+}
+
+@keyframes glowText {
+    from { text-shadow: 0 0 10px rgba(255,255,255,0.1); }
+    to { text-shadow: 0 0 20px var(--accent-glow); }
+}
+
+.currency {
+    color: var(--accent-blue);
+    font-size: 2.5rem;
+    vertical-align: super;
+}
+
+/* --- History Items --- */
+.history-item.clickable {
+    background: rgba(2, 6, 23, 0.5);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+.history-item.clickable:hover {
+    background: var(--border-color);
+    border-color: var(--accent-blue);
+    transform: translateX(10px);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 1024px) {
+    .predict-grid { grid-template-columns: 1fr; }
+    .inputs-wrapper { grid-template-columns: 1fr; }
+    .result-value { font-size: 3.5rem; }
+}
+
+/* --- History Panel & Timeline --- */
+.history-panel {
+    background: #0f172a !important;
+    position: relative;
+}
+
+.history-list {
+    position: relative;
+    padding-left: 10px;
+}
+
+/* The vertical timeline line */
+.history-list::before {
+    content: '';
+    position: absolute;
+    left: 16px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #3b82f6 0%, #1e293b 100%);
+    opacity: 0.3;
+}
+
+.history-item-container {
+    position: relative;
+    padding-left: 35px;
+    padding-bottom: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.history-timeline-dot {
+    position: absolute;
+    left: 11px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background: #0f172a;
+    border: 2px solid #3b82f6;
+    border-radius: 50%;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.history-item-container:hover .history-timeline-dot {
+    background: #3b82f6;
+    box-shadow: 0 0 10px #3b82f6;
+}
+
+.history-item-content {
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    padding: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.history-item-container:hover .history-item-content {
+    background: #1e293b;
+    border-color: #3b82f6;
+    transform: translateX(10px);
+}
+
+.h-badge {
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: #020617;
+    color: #3b82f6;
+    border: 1px solid #3b82f6;
+}
+
+.h-amount {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+.h-currency {
+    color: #10b981; /* Green profit color */
+    margin-right: 4px;
+    font-weight: 600;
+}
+
+/* --- ICONIC GLASS MODAL --- */
+.modal-overlay {
+    background: rgba(2, 6, 23, 0.85);
+    backdrop-filter: blur(12px);
+}
+
+.modal-glass-card {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 28px;
+    width: 90%;
+    max-width: 500px;
+    padding: 40px;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.modal-accent-line {
+    position: absolute;
+    top: 0; left: 50px; right: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+}
+
+.modal-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.stat-box {
+    background: #020617;
+    padding: 15px;
+    border-radius: 16px;
+    border: 1px solid #1e293b;
+}
+
+.stat-box label {
+    display: block;
+    font-size: 11px;
+    color: #64748b;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.stat-val {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #f8fafc;
+}
+
+.modal-total-section {
+    text-align: center;
+    border-top: 1px solid #1e293b;
+    padding-top: 25px;
+}
+
+.total-amount {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #10b981;
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+/* Container for the select and the custom arrow */
+.custom-select-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Base Select Styling */
+.state-select {
+    width: 100%;
+    appearance: none; /* Removes default browser arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+    background-color: #020617; /* Matches your deep background */
+    border: 1.5px solid #1e293b;
+    border-radius: 14px;
+    padding: 14px 18px;
+    padding-right: 45px; /* Space for custom arrow */
+    
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover & Focus States */
+.state-select:hover {
+    border-color: #334155;
+    background-color: #0f172a;
+}
+
+.state-select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background-color: #020617;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15), 
+                0 10px 20px -10px rgba(0, 0, 0, 0.5);
+    transform: translateY(-1px);
+}
+
+/* Custom Arrow Icon (The "Iconic" touch) */
+.select-arrow {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 6px;
+    background-color: #3b82f6;
+    clip-path: polygon(0% 0%, 100% 0%, 50% 100%); /* Creates a perfect triangle */
+    pointer-events: none; /* Clicks go through to the select */
+    transition: transform 0.3s ease;
+}
+
+/* Rotate arrow when focus (using parent focus-within) */
+.custom-select-container:focus-within .select-arrow {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Styling the Option tags (Limited browser support, but works in Chrome/Edge) */
+.state-select option {
+    background-color: #0f172a;
+    color: #ffffff;
+    padding: 12px;
+}
+
+/* Style for the Label (consistent with your inputs) */
+.input-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #94a3b8;
+    margin-bottom: 8px;
+    margin-left: 4px;
+}

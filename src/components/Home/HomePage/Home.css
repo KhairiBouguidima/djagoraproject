@@ -1,0 +1,290 @@
+.home-container {
+    min-height: 100vh;
+    background-color: #020617;
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+.home-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #1e293b;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.home-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.hero-section {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(37, 99, 235, 0.1);
+    color: #3b82f6;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.hero-section h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+}
+
+.text-gradient {
+    background: linear-gradient(to right, #3b82f6, #60a5fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: #94a3b8;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Definition Cards */
+.definition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 80px;
+}
+
+.definition-card {
+    background: #0f172a;
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid #1e293b;
+    transition: all 0.3s ease;
+}
+
+.definition-card:hover {
+    border-color: #3b82f6;
+    transform: translateY(-5px);
+    background: #1e293b;
+}
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(37, 99, 235, 0.1);
+    color: #3b82f6;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.definition-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+}
+
+.definition-card p {
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+/* CTA Section */
+.cta-banner {
+    background: linear-gradient(90deg, #1e40af 0%, #1e293b 100%);
+    padding: 40px;
+    border-radius: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.primary-cta {
+    background: white;
+    color: #020617;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s;
+}
+
+.primary-cta:hover {
+    transform: scale(1.05);
+}
+
+.logout-btn {
+    background: transparent;
+    color: #94a3b8;
+    border: 1px solid #1e293b;
+    padding: 8px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.logout-btn:hover {
+    background: #ef4444;
+    color: white;
+    border-color: #ef4444;
+}
+/* ================= TEAM SECTION ================= */
+.team-section {
+    margin-top: 120px;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+}
+
+.team-title {
+    font-size: 36px;
+    margin-bottom: 60px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #00bcd4, #3f51b5);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientText 5s ease infinite;
+}
+
+@keyframes gradientText {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.team-container {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+/* ============ TEAM CARD ============ */
+.team-card {
+    width: 280px;
+    padding: 35px 25px;
+    border-radius: 25px;
+    backdrop-filter: blur(25px);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    transition: all 0.5s ease;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.team-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(135deg, #00bcd4, #3f51b5, #ff4081, #ff9800);
+    background-size: 400% 400%;
+    opacity: 0.2;
+    filter: blur(60px);
+    animation: floatGradient 15s linear infinite;
+    z-index: 0;
+    border-radius: 25px;
+}
+
+@keyframes floatGradient {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.team-card:hover {
+    transform: translateY(-20px) scale(1.08);
+    box-shadow: 0 25px 70px rgba(0, 188, 212, 0.6);
+}
+
+/* ============ IMAGE ============ */
+.team-image {
+    width: 130px;
+    height: 130px;
+    margin: auto;
+    margin-bottom: 25px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #00bcd4;
+    box-shadow: 0 0 20px #00bcd4;
+    transition: all 0.6s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-card:hover .team-image {
+    transform: rotate(8deg) scale(1.12);
+    box-shadow: 0 0 40px #ff4081;
+}
+
+/* ============ TEXT ============ */
+.team-card h3 {
+    margin: 12px 0 6px 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+}
+
+.team-card p {
+    font-size: 15px;
+    color: #c0c0c0;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .team-container {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 35px;
+    }
+}
