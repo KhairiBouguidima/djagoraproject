@@ -6,7 +6,7 @@ import { AuthProvider } from '../src/components/contexts/authContexts';
 import ProtectedRoute from '../src/components/Protect/ProtectedRoute';
 
 // Layout Components
-import Navbar from './components/navbar/Navbar'; // Adjust path based on where you saved it
+ // Adjust path based on where you saved it
 
 // Page Components
 import Login from './components/auth/login/Login';
@@ -26,9 +26,7 @@ function App() {
       <Router>
         {/* The Navbar stays outside Routes so it appears on all pages */}
         
-                        <ProtectedRoute>
-                  <Navbar /> 
-                </ProtectedRoute>
+                   
         <main className="app-main-content">
           <Routes>
             {/* Public Routes */}
