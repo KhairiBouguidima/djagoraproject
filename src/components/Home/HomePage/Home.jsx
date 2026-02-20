@@ -1,30 +1,14 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { 
-    LayoutDashboard, 
-    TrendingUp, 
     BarChart3, 
     ShieldCheck, 
-    LogOut,
     ArrowRight,
     Target
 } from 'lucide-react';
-import { doSignOut } from '../../firebase/auth';
 import './Home.css';
 import Navbar from '../../navbar/Navbar';
 
 const Home = () => {
-    const navigate = useNavigate();
-
-    const handleLogout = async () => {
-        try {
-            await doSignOut();
-            navigate('/login');
-        } catch (err) {
-            console.error("Logout failed", err);
-        }
-    };
-
     return (
         <>
         <Navbar/>
@@ -99,7 +83,7 @@ const Home = () => {
                 <img src="/imgs/WhatsApp Image 2026-02-13 at 14.41.03.jpeg" alt="Khairi Bouguidima" />
             </div>
             <h3>Khairi Bouguidima</h3>
-            <p>Full Stack Developer & System Architect</p>
+            <p>AI Engineer & Data Analyst</p>
         </div>
 
         <div className="team-card animated-card">
@@ -107,7 +91,7 @@ const Home = () => {
                 <img src="/imgs/WhatsApp Image 2026-02-20 at 22.43.55.jpeg" alt="Mouhamed Mouldi Ben Ksaier" />
             </div>
             <h3>Mouhamed Mouldi Ben Ksaier</h3>
-            <p>AI Engineer & Data Analyst</p>
+            <p>Full Stack Developer & System Architect</p>
         </div>
 
     </div>

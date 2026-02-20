@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { 
     Cpu, History, Play, FastForward, Loader2, 
     AlertCircle, CheckCircle2, X, Info, TrendingUp 
@@ -34,7 +34,7 @@ const PredictModel = () => {
 
     useEffect(() => {
         if (currentUser) fetchHistory();
-    }, [currentUser]);
+    }, [currentUser ,fetchHistory()]);
 
     const fetchHistory = async () => {
         if (!currentUser) return;

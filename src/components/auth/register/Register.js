@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Mail, Lock, Chrome, Loader2, UserCheck } from 'lucide-react'; 
+import { Mail, Lock, Chrome, Loader2 } from 'lucide-react'; 
 import { 
     doCreateUserWithEmailAndPassword, 
     doEmailVerification, 
