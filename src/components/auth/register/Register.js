@@ -7,7 +7,7 @@ import {
     doSignInWithGoogle 
 } from '../../firebase/auth';
 import './Register.css'; // Reusing the same CSS for consistency
-
+import { auth } from "../../firebase/firebase";
 const Register = () => {
     const navigate = useNavigate();
     
@@ -26,19 +26,31 @@ const Register = () => {
             return;
         }
 
-        if (!isRegistering) {
-            setIsRegistering(true);
-            try {
-                await doCreateUserWithEmailAndPassword(email, password);
-                await doEmailVerification();
-                // Professional touch: using a toast or alert before redirecting
-                alert("Account created! Please check your email for a verification link.");
-                navigate('/login');
-            } catch (err) {
-                setErrorMessage(err.message.replace("Firebase: ", ""));
-                setIsRegistering(false);
-            }
+if (!isRegistering) {
+    setIsRegistering(true);
+    try {
+        await doCreateUserWithEmailAndPassword(email, password);
+        await doEmailVerification();
+
+        alert("Account created! Please verify your email before continuing.");
+
+        const user = auth.currentUser;
+
+        // Reload user to get latest emailVerified status
+        await user.reload();
+
+        if (user.emailVerified) {
+            navigate('/login');
+        } else {
+            setErrorMessage("Please verify your email before logging in.");
+            setIsRegistering(false);
         }
+
+    } catch (err) {
+        setErrorMessage(err.message.replace("Firebase: ", ""));
+        setIsRegistering(false);
+    }
+}
     };
 
     const onGoogleSignIn = async (e) => {

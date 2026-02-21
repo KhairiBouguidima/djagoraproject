@@ -7,6 +7,7 @@ import {
     doPasswordReset 
 } from '../../firebase/auth';
 import './Login.css';
+import auth from '../../firebase/firebase'
 const Login = () => {
     const navigate = useNavigate();
     
@@ -18,21 +19,33 @@ const Login = () => {
     const [errorMessage, setErrorMessage] = useState('');
 
     const onLogin = async (e) => {
-        e.preventDefault();
-        if (isSigningIn) return;
+    e.preventDefault();
+    if (isSigningIn) return;
 
-        setIsSigningIn(true);
-        setErrorMessage('');
-        
-        try {
-            await doSignInWithEmailAndPassword(email, password);
-            navigate('/home');
-        } catch (err) {
-            // Friendly error messages are more professional
-            setErrorMessage("The email or password you entered is incorrect.");
+    setIsSigningIn(true);
+    setErrorMessage('');
+
+    try {
+        const userCredential = await doSignInWithEmailAndPassword(email, password);
+        const user = userCredential.user;
+
+        // Reload user to ensure latest emailVerified value
+        await user.reload();
+
+        if (!user.emailVerified) {
+            setErrorMessage("Please verify your email before logging in.");
+            await auth.signOut(); // Optional: force logout if not verified
             setIsSigningIn(false);
+            return;
         }
-    };
+
+        navigate('/home');
+
+    } catch (err) {
+        setErrorMessage("The email or password you entered is incorrect.");
+        setIsSigningIn(false);
+    }
+};
 
     const onGoogleSignIn = async (e) => {
         e.preventDefault();
